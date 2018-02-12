@@ -1,18 +1,17 @@
 package com.assignment.youtube.service.impl;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.assignment.youtube.enums.YouTubeType;
+import com.assignment.youtube.model.SearchResponse;
 import com.assignment.youtube.service.YouTubeService;
 import com.assignment.youtube.util.YouTubeUtil;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
-import com.google.api.services.youtube.model.SearchResult;
 
 @Service
 public class YouTubeServiceImpl implements YouTubeService {
@@ -21,8 +20,8 @@ public class YouTubeServiceImpl implements YouTubeService {
 	private String apiKey;
 
 	@Override
-	public List<SearchResult> fetchVideoData(String keyword, Long maxNo) {
-		List<SearchResult> searchResultList = null;
+	public SearchResponse fetchVideoData(String keyword, Long maxNo) {
+		SearchResponse response=new SearchResponse();
     	try {
             // This object is used to make YouTube Data API requests. The last
             // argument is required, but since we don't need anything
@@ -54,19 +53,26 @@ public class YouTubeServiceImpl implements YouTubeService {
 
             // Call the API and print results.
             SearchListResponse searchResponse = search.execute();
-            searchResultList = searchResponse.getItems();
+            response.setSearchResult(searchResponse.getItems());
+            response.setStatus("success");
+            return response;
            
         } catch (GoogleJsonResponseException e) {
+        	response.setErrorMessage(e.getDetails().getMessage());
+        	response.setStatus("failure");
             System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
                     + e.getDetails().getMessage());
+            return response;
+            
         } catch (IOException e) {
             System.err.println("There was an IO error: " + e.getCause() + " : " + e.getMessage());
         } catch (Throwable t) {
             t.printStackTrace();
         }
+    	response.setErrorMessage("unable to fetch data!!");
+    	response.setStatus("failure");
     	
-    	
-    	return searchResultList;
+    	return response;
 	}
 
 	

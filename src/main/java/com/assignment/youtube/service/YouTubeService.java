@@ -1,8 +1,6 @@
 package com.assignment.youtube.service;
 
-import java.util.List;
-
-import com.google.api.services.youtube.model.SearchResult;
+import com.assignment.youtube.model.SearchResponse;
 
 public interface YouTubeService {
 	
@@ -11,6 +9,6 @@ public interface YouTubeService {
 	 * @param video keyword
 	 * @return
 	 */
-	public List<SearchResult> fetchVideoData(String keyword, Long maxNo);
+	public SearchResponse fetchVideoData(String keyword, Long maxNo);
 
 }
