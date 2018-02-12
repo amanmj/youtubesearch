@@ -40,6 +40,7 @@ public class YouTubeApplication implements CommandLineRunner{
 				}
 			} catch (NumberFormatException e) {
 				System.out.println("ERROR: please provide positive numeric value for RESULT-COUNT parameter!");
+				return;
 			}
 			
 		}
