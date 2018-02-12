@@ -6,4 +6,4 @@ How to execute(post build).
 (1) go to target folder
 (2) java -jar youtube-search-0.0.1-SNAPSHOT.jar
 (3) Hit the URL, to get the result of you tube video search using keyword:
-http://localhost:8080/search/youTubeData?keyword=java&maxNo=5
+http://localhost:8080/youtube/search?keyword=java&maxNo=5

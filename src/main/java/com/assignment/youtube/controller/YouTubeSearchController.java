@@ -12,13 +12,13 @@ import com.assignment.youtube.model.SearchResponse;
 import com.assignment.youtube.service.YouTubeService;
 
 @RestController
-@RequestMapping("/search/")
+@RequestMapping("/youtube/")
 public class YouTubeSearchController {
 
 	@Autowired
 	private YouTubeService youTubeService;
 
-	@GetMapping(value = "/youTubeData")
+	@GetMapping(value = "/search")
 	@ResponseBody
 	public SearchResponse youTubeVideo(@RequestParam String keyword, @RequestParam Long maxNo) {
 		if (StringUtils.isEmpty(keyword)) {
