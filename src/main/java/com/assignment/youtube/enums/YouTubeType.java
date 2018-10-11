@@ -10,8 +10,8 @@ public enum YouTubeType {
 	VIDEO("video"),IMAGE("image");
 	private String name;
 
-	private YouTubeType(String type) {
-		this.setName(type);
+	public YouTubeType(String name) {
+		this.name=name	
 	}
 
 	public String getName() {
