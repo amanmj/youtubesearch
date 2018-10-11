@@ -22,8 +22,10 @@ public class YouTubeServiceTests {
 		SearchResponse inputList=youTubeService.fetchVideoData("java", 2L);
 		Assert.assertNotNull(inputList.getSearchResult());
 		Assert.assertEquals(2, inputList.getSearchResult().size());
-		
-	}	
-	
-
+	}
+	@Test
+	public void getNullValueWhenGivenNegativeNumber(){
+		SearchResponse inputList=youTubeService.fetchVideoData("java", -12L);
+		Assert.assertNull(inputList.getSearchResult());
+	}
 }

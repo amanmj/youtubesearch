@@ -7,9 +7,6 @@ import com.google.api.services.youtube.model.SearchResult;
 
 public class SearchResponse implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8471823659606990245L;
 
 	private String errorMessage;
@@ -33,6 +30,4 @@ public class SearchResponse implements Serializable{
 	public void setSearchResult(List<SearchResult> searchResult) {
 		this.searchResult = searchResult;
 	}
-	
-	
 }
