@@ -2,6 +2,7 @@ package com.assignment.youtube.service.impl;
 
 import java.io.IOException;
 
+import com.assignment.youtube.util.Constants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -30,15 +31,12 @@ public class YouTubeServiceImpl implements YouTubeService {
     		YouTube youtube = YouTubeUtil.buildYouTubeApi();
 
             // Prompt the user to enter a query term.
-           // String queryTerm = getInputQuery();
 
             // Define the API request for retrieving search results.
             YouTube.Search.List search = youtube.search().list("id,snippet");
 
             // Set your developer key from the {{ Google Cloud Console }} for
             // non-authenticated requests. See:
-            // {{ https://cloud.google.com/console }}
-           // String apiKey = "AIzaSyBKak7V9d__R1KqmLJLbPk6Q2xWDrJK0FY";
             search.setKey(apiKey);
             search.setQ(keyword);
 
@@ -54,12 +52,12 @@ public class YouTubeServiceImpl implements YouTubeService {
             // Call the API and print results.
             SearchListResponse searchResponse = search.execute();
             response.setSearchResult(searchResponse.getItems());
-            response.setStatus("success");
+            response.setStatus(Constants.SUCCESS);
             return response;
            
         } catch (GoogleJsonResponseException e) {
         	response.setErrorMessage(e.getDetails().getMessage());
-        	response.setStatus("failure");
+        	response.setStatus(Constants.FAILURE);
             System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
                     + e.getDetails().getMessage());
             return response;
@@ -70,11 +68,8 @@ public class YouTubeServiceImpl implements YouTubeService {
             t.printStackTrace();
         }
     	response.setErrorMessage("unable to fetch data!!");
-    	response.setStatus("failure");
+    	response.setStatus(Constants.FAILURE);
     	
     	return response;
 	}
-
-	
-
 }

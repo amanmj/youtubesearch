@@ -7,7 +7,8 @@ package com.assignment.youtube.enums;
  * 03-Dec-2017
  */
 public enum YouTubeType {
-	VIDEO("video"),IMAGE("image");
+	VIDEO("video");
+
 	private String name;
 
 	private YouTubeType(String type) {

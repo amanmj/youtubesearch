@@ -9,6 +9,6 @@ public interface YouTubeService {
 	 * @param video keyword
 	 * @return
 	 */
-	public SearchResponse fetchVideoData(String keyword, Long maxNo);
+	SearchResponse fetchVideoData(String keyword, Long maxNumber);
 
 }
