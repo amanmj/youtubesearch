@@ -1,4 +1,4 @@
-This is spring-boot application. requires Maven,Java 8 to build
+This is a spring-boot application.It requires Maven,Java 8 to build
 How to build
 (1) mvn clean install
 
