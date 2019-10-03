@@ -2,6 +2,9 @@ package com.assignment.youtube.service;
 
 import com.assignment.youtube.model.SearchResponse;
 
+/**
+ * Youtube service to fetch video data.
+ */
 public interface YouTubeService {
 	
 	/**
